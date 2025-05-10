@@ -2,7 +2,7 @@
 import sys
 
 if __name__ == "__main__":
-    args = sys.argv[1:]  
+    args = sys.argv[1:]
     num_args = len(args)
 
     print("{} argument{}".format(
