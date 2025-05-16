@@ -1,24 +1,25 @@
 #!/usr/bin/python3
-
 """
-This module defines a function that divides all elements of a matrix.
+This module defines a function to divide all elements of a matrix.
 """
 
 
 def matrix_divided(matrix, div):
     """
-    Divides all elements of a matrix by div, rounding results to 2 decimals.
+    Divides all elements of a matrix by div and returns a new matrix.
 
     Args:
-        matrix: list of lists of integers/floats
-        div: number to divide each element by
+        matrix (list of lists): Matrix of integers/floats.
+        div (int or float): Number to divide by.
 
     Returns:
-        A new matrix with divided values
+        list of lists: New matrix with elements divided by div, rounded to 2 decimals.
 
     Raises:
-        TypeError: if matrix is not list of lists of numbers, or div not number
-        ZeroDivisionError: if div is zero
+        TypeError: If matrix elements are not all ints/floats,
+                   or if rows are not all the same size,
+                   or if div is not a number.
+        ZeroDivisionError: If div is 0.
     """
     if not isinstance(matrix, list) or not all(
         isinstance(row, list) for row in matrix
@@ -42,9 +43,6 @@ def matrix_divided(matrix, div):
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
-
-    if div == float('inf') or div == -float('inf'):
-        return [[0.0 for _ in row] for row in matrix]
 
     return [
         [round(num / div, 2) for num in row]
