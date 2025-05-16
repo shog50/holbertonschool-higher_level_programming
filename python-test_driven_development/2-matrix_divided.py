@@ -19,9 +19,6 @@ def matrix_divided(matrix, div):
         TypeError: if matrix is not list of lists of numbers, or div not number
         ZeroDivisionError: if div is zero
     """
-    if matrix is None or div is None:
-        raise TypeError("missing required argument")
-
     if not isinstance(matrix, list) or not all(
         isinstance(row, list) for row in matrix
     ):
@@ -45,8 +42,7 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    if div == float('inf') or div == float('-inf'):
-        # return matrix of zeros same size as input
+    if div == float('inf') or div == -float('inf'):
         return [[0.0 for _ in row] for row in matrix]
 
     return [
