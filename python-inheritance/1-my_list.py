@@ -13,4 +13,4 @@ class MyList(list):
 
     def __str__(self):
         """Returns a string representation of the list."""
-        return str(list(self))
+        return super().__str__()
