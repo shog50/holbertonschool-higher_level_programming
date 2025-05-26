@@ -1,0 +1,22 @@
+The following tests check that the lookup function returns
+a list of available attributes and methods for a given object.
+
+>>> from 0-lookup import lookup
+
+>>> class MyClass:
+...     my_attr = 42
+...     def my_method(self):
+...         pass
+
+>>> 'my_attr' in lookup(MyClass)
+True
+
+>>> 'my_method' in lookup(MyClass)
+True
+
+>>> '__init__' in lookup(MyClass)
+True
+
+>>> isinstance(lookup(MyClass), list)
+True
+
