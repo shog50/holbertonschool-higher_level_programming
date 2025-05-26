@@ -9,7 +9,8 @@ class MyList(list):
     def print_sorted(self):
         """Prints the list in ascending order
         without modifying the original list."""
-        if not self:  # Handles empty list case
-            print([])
-        else:
-            print(sorted(self))
+        print(sorted(self))
+
+    def __str__(self):
+        """Returns a string representation of the list."""
+        return str(list(self))
