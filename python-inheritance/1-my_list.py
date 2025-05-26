@@ -5,12 +5,12 @@ This module defines a class MyList that inherits from list.
 
 
 class MyList(list):
-    """A subclass of list with an additional print_sorted method."""
+    """MyList class inherits from list and adds a print_sorted method."""
     def print_sorted(self):
         """Prints the list in ascending order
         without modifying the original list."""
         print(sorted(self))
 
     def __str__(self):
-        """Returns a string representation of the list."""
-        return super().__str__()
+        """Returns the string representation of the list."""
+        return str(list(self))
