@@ -17,7 +17,7 @@ class BaseGeometry:
 
         Args:
             name (str): The name of the value.
-            value (any): The value to validate.
+            value (int): The value to validate.
 
         Raises:
             TypeError: If value is not an integer.
