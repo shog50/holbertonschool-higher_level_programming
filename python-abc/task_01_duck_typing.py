@@ -12,12 +12,12 @@ class Shape(ABC):
 
     @abstractmethod
     def area(self):
-        """Abstract method to compute the area"""
+        """Returns the area of the shape"""
         pass
 
     @abstractmethod
     def perimeter(self):
-        """Abstract method to compute the perimeter"""
+        """Returns the perimeter of the shape"""
         pass
 
 
@@ -25,7 +25,9 @@ class Circle(Shape):
     """Circle subclass inheriting from Shape"""
 
     def __init__(self, radius):
-        """Initializes a Circle instance after validation"""
+        """Initializes a Circle instance with radius"""
+        if radius <= 0:
+            raise ValueError("Radius must be positive")
         self.radius = radius
 
     def area(self):
@@ -41,7 +43,9 @@ class Rectangle(Shape):
     """Rectangle subclass inheriting from Shape"""
 
     def __init__(self, width, height):
-        """Initializes a Rectangle instance after validation"""
+        """Initializes a Rectangle instance with width and height"""
+        if width <= 0 or height <= 0:
+            raise ValueError("Width and height must be positive")
         self.width = width
         self.height = height
 
@@ -56,5 +60,8 @@ class Rectangle(Shape):
 
 def shape_info(shape):
     """Prints the area and perimeter of a shape using duck typing"""
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    try:
+        print(f"Area: {shape.area()}")
+        print(f"Perimeter: {shape.perimeter()}")
+    except AttributeError:
+        print("Error: The object must implement area() and perimeter()")
