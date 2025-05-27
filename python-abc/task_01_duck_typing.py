@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-Shape module using Abstract Base Classes (ABC) and duck typing
+This module defines an abstract base class 'Shape' and its subclasses
+'Circle' and 'Rectangle'. It also includes a function 'shape_info'
+that demonstrates duck typing.
 """
 
 from abc import ABC, abstractmethod
@@ -8,60 +10,81 @@ import math
 
 
 class Shape(ABC):
-    """Abstract class representing a Shape"""
+    """Abstract base class representing a geometric shape."""
 
     @abstractmethod
-    def area(self):
-        """Returns the area of the shape"""
+    def area(self) -> float:
+        """Compute the area of the shape."""
         pass
 
     @abstractmethod
-    def perimeter(self):
-        """Returns the perimeter of the shape"""
+    def perimeter(self) -> float:
+        """Compute the perimeter of the shape."""
         pass
 
 
 class Circle(Shape):
-    """Circle subclass inheriting from Shape"""
+    """Concrete class representing a circle."""
 
-    def __init__(self, radius):
-        """Initializes a Circle instance with radius"""
+    def __init__(self, radius: float):
+        """
+        Initialize a Circle.
+
+        Args:
+            radius (float): The radius of the circle.
+
+        Raises:
+            ValueError: If radius is not greater than 0.
+        """
         if radius <= 0:
-            raise ValueError("Radius must be positive")
+            raise ValueError("radius must be greater than 0")
         self.radius = radius
 
-    def area(self):
-        """Computes and returns the area of the circle"""
+    def area(self) -> float:
+        """Return the area of the circle."""
         return math.pi * self.radius ** 2
 
-    def perimeter(self):
-        """Computes and returns the perimeter of the circle"""
+    def perimeter(self) -> float:
+        """Return the perimeter (circumference) of the circle."""
         return 2 * math.pi * self.radius
 
 
 class Rectangle(Shape):
-    """Rectangle subclass inheriting from Shape"""
+    """Concrete class representing a rectangle."""
 
-    def __init__(self, width, height):
-        """Initializes a Rectangle instance with width and height"""
-        if width <= 0 or height <= 0:
-            raise ValueError("Width and height must be positive")
+    def __init__(self, width: float, height: float):
+        """
+        Initialize a Rectangle.
+
+        Args:
+            width (float): The width of the rectangle.
+            height (float): The height of the rectangle.
+
+        Raises:
+            ValueError: If width or height is not greater than 0.
+        """
+        if width <= 0:
+            raise ValueError("width must be greater than 0")
+        if height <= 0:
+            raise ValueError("height must be greater than 0")
         self.width = width
         self.height = height
 
-    def area(self):
-        """Computes and returns the area of the rectangle"""
+    def area(self) -> float:
+        """Return the area of the rectangle."""
         return self.width * self.height
 
-    def perimeter(self):
-        """Computes and returns the perimeter of the rectangle"""
+    def perimeter(self) -> float:
+        """Return the perimeter of the rectangle."""
         return 2 * (self.width + self.height)
 
 
-def shape_info(shape):
-    """Prints the area and perimeter of a shape using duck typing"""
-    try:
-        print(f"Area: {shape.area()}")
-        print(f"Perimeter: {shape.perimeter()}")
-    except AttributeError:
-        print("Error: The object must implement area() and perimeter()")
+def shape_info(shape: Shape) -> None:
+    """
+    Print the area and perimeter of a shape using duck typing.
+
+    Args:
+        shape (Shape): An object that implements area and perimeter.
+    """
+    print(f"Area: {shape.area()}")
+    print(f"Perimeter: {shape.perimeter()}")
