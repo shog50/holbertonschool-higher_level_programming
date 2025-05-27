@@ -13,4 +13,4 @@ class Square(Rectangle):
         """Initializes a Square instance after validation"""
         self.integer_validator("size", size)
         self.__size = size
-        super().__init__(size, size)  # Calls Rectangle with equal width and height
+        super().__init__(size, size)
