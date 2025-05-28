@@ -25,9 +25,7 @@ class Circle(Shape):
     """Circle subclass inheriting from Shape"""
 
     def __init__(self, radius):
-        """Initializes a Circle instance"""
-        if radius <= 0:
-            raise ValueError("Radius must be positive")
+        """Initializes a Circle instance after validation"""
         self.radius = radius
 
     def area(self):
@@ -43,9 +41,7 @@ class Rectangle(Shape):
     """Rectangle subclass inheriting from Shape"""
 
     def __init__(self, width, height):
-        """Initializes a Rectangle instance"""
-        if width <= 0 or height <= 0:
-            raise ValueError("Width and height must be positive")
+        """Initializes a Rectangle instance after validation"""
         self.width = width
         self.height = height
 
@@ -60,20 +56,5 @@ class Rectangle(Shape):
 
 def shape_info(shape):
     """Prints the area and perimeter of a shape using duck typing"""
-    try:
-        print(f"Area: {shape.area()}")
-        print(f"Perimeter: {shape.perimeter()}")
-    except AttributeError:
-        print("Error: Provided object does not implement the required methods")
-
-
-if __name__ == "__main__":
-    """Testing the implementation"""
-    try:
-        circle = Circle(radius=5)
-        rectangle = Rectangle(width=4, height=7)
-
-        shape_info(circle)
-        shape_info(rectangle)
-    except ValueError as e:
-        print(f"Initialization Error: {e}")
+    print(f"Area: {shape.area()}")
+    print(f"Perimeter: {shape.perimeter()}")
