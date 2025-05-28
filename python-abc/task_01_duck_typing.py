@@ -77,4 +77,3 @@ if __name__ == "__main__":
         shape_info(rectangle)
     except ValueError as e:
         print(f"Initialization Error: {e}")
-
