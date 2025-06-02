@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module provides a function to append a string to the end of a UTF-8 text file.
+This module provides 
+a function to append a string to the end of a UTF-8 text file.
 """
 
 
