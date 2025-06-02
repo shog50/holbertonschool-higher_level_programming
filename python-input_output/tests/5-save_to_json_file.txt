@@ -1,0 +1,41 @@
+"""
+Test save_to_json_file function.
+
+>>> import os
+>>> save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+
+>>> filename = "test_list.json"
+>>> my_list = [1, 2, 3]
+>>> save_to_json_file(my_list, filename)
+>>> with open(filename, "r") as f:
+...     print(f.read().strip())
+[1, 2, 3]
+>>> os.remove(filename)
+
+>>> filename = "test_dict.json"
+>>> my_dict = {
+...     "id": 12,
+...     "name": "John",
+...     "places": ["San Francisco", "Tokyo"],
+...     "is_active": True,
+...     "info": {"age": 36, "average": 3.14}
+... }
+>>> save_to_json_file(my_dict, filename)
+>>> with open(filename, "r") as f:
+...     content = f.read()
+>>> import json
+>>> loaded = json.loads(content)
+>>> loaded == my_dict
+True
+>>> os.remove(filename)
+
+>>> # Test with an unserializable object should raise TypeError
+>>> filename = "test_set.json"
+>>> my_set = {1, 2}
+>>> try:
+...     save_to_json_file(my_set, filename)
+... except TypeError as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] Object of type set is not JSON serializable
+
+"""
