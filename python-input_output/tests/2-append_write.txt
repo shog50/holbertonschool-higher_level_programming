@@ -1,0 +1,27 @@
+Tests for append_write function
+
+>>> append_write = __import__('2-append_write').append_write
+
+# Create a new file and append text
+>>> filename = "append_test.txt"
+>>> append_write(filename, "Line 1\n")
+7
+>>> append_write(filename, "Line 2\n")
+7
+
+# Check file content
+>>> with open(filename, "r", encoding="utf-8") as f:
+...     f.read()
+'Line 1\nLine 2\n'
+
+# Append an empty string (should return 0)
+>>> append_write(filename, "")
+0
+
+# Append again and confirm new content
+>>> append_write(filename, "Line 3\n")
+7
+>>> with open(filename, "r", encoding="utf-8") as f:
+...     f.read()
+'Line 1\nLine 2\nLine 3\n'
+
