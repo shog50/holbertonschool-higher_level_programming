@@ -1,0 +1,38 @@
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+
+# Test loading a list from a JSON file
+filename = "my_list.json"
+with open(filename, 'w') as f:
+    f.write('[1, 2, 3]')
+obj = load_from_json_file(filename)
+print(obj)
+[1, 2, 3]
+print(type(obj))
+<class 'list'>
+
+# Test loading a dictionary from a JSON file
+filename = "my_dict.json"
+with open(filename, 'w') as f:
+    f.write('{"name": "Shouq", "age": 22}')
+obj = load_from_json_file(filename)
+print(obj)
+{'name': 'Shouq', 'age': 22}
+print(type(obj))
+<class 'dict'>
+
+# Test loading invalid JSON format
+filename = "invalid.json"
+with open(filename, 'w') as f:
+    f.write('{"is_active": true, 12 }')
+try:
+    load_from_json_file(filename)
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, str(e).split(':')[0]))
+[JSONDecodeError] Expecting property name enclosed in double quotes
+
+# Clean up files
+import os
+os.remove("my_list.json")
+os.remove("my_dict.json")
+os.remove("invalid.json")
+
