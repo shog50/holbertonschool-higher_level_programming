@@ -1,0 +1,18 @@
+Tests for write_file function
+
+>>> write_file = __import__('1-write_file').write_file
+>>> filename = "test_output.txt"
+>>> result = write_file(filename, "Hello, World!\n")
+>>> result
+14
+>>> with open(filename, "r", encoding="utf-8") as f:
+...     f.read()
+'Hello, World!\n'
+
+>>> result = write_file(filename, "Overwritten!")
+>>> result
+12
+>>> with open(filename, "r", encoding="utf-8") as f:
+...     f.read()
+'Overwritten!'
+
