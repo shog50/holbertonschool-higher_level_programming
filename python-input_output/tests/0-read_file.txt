@@ -1,0 +1,9 @@
+This is a sample test for the read_file function.
+
+>>> read_file = __import__('0-read_file').read_file
+>>> with open("sample_test_file.txt", "w") as f:
+...     _ = f.write("Hello, Holberton!\nThis is a test file.\n")
+>>> read_file("sample_test_file.txt")
+Hello, Holberton!
+This is a test file.
+
