@@ -1,0 +1,23 @@
+"""
+>>> from_json_string = __import__('4-from_json_string').from_json_string
+>>> s_my_list = "[1, 2, 3]"
+>>> my_list = from_json_string(s_my_list)
+>>> print(my_list)
+[1, 2, 3]
+>>> print(type(my_list))
+<class 'list'>
+>>> s_my_dict = '{"is_active": true, "info": {"age": 36, "average": 3.14}, "id": 12, "name": "John", "places": ["San Francisco", "Tokyo"]}'
+>>> my_dict = from_json_string(s_my_dict)
+>>> print(my_dict)
+{'is_active': True, 'info': {'age': 36, 'average': 3.14}, 'id': 12, 'name': 'John', 'places': ['San Francisco', 'Tokyo']}
+>>> print(type(my_dict))
+<class 'dict'>
+>>> try:
+...     s_invalid = '{"is_active": true, 12 }'
+...     from_json_string(s_invalid)
+... except Exception as e:
+...     msg = str(e)
+...     print("[{}] {}".format(e.__class__.__name__, msg.split(':')[0]))  # doctest: +ELLIPSIS
+[JSONDecodeError] Expecting property name enclosed in double quotes
+
+"""
