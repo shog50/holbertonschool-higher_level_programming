@@ -49,8 +49,5 @@ To test each script, use the corresponding HTML file (`0-main.html`, `1-main.htm
 Each script is automatically loaded via the `<script src="X-script.js">` tag in the HTML.
 
 ## 🔍 Example
-
 ```html
 <script type="text/javascript" src="3-script.js"></script>
-#Author: Shouq Alosaimi
-
